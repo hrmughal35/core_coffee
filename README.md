@@ -39,6 +39,16 @@ npm start
 
 Deploy to [Vercel](https://vercel.com) by connecting the repo; no extra config needed.
 
+### Deploy to GitHub Pages
+
+1. In your repo go to **Settings → Pages** (under "Code and automation").
+2. Under **Build and deployment**, set **Source** to **"Deploy from a branch"**.
+3. Under **Branch**, choose branch **`gh-pages`** and folder **`/ (root)`**. Click **Save**.
+4. Push the latest code to `main`. The GitHub Action will build the site and deploy to the `gh-pages` branch.
+5. Your site will be live at **`https://hrmughal35.github.io/core_coffee/`** (may take 1–2 minutes after the first push).
+
+If your repo name changes, update `repoName` in `next.config.js`.
+
 ## Images (all local — no external URLs)
 
 All images are stored in **`public/images/`** so they work everywhere (no CORS, no broken links):
