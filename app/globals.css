@@ -105,3 +105,32 @@ img {
 .btn-hero-glow:hover {
   box-shadow: 0 0 0 1px rgba(212, 160, 84, 0.5), 0 12px 40px rgba(212, 160, 84, 0.35);
 }
+
+/* Hero text shadow - better visibility on video background */
+.drop-shadow-hero {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Coffee pour intro animation */
+@keyframes pour-stream {
+  0% {
+    stroke-dashoffset: 200;
+    opacity: 1;
+  }
+  70% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.3;
+  }
+}
+@keyframes fill-cup {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}

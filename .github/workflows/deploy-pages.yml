@@ -27,9 +27,13 @@ jobs:
           GITHUB_PAGES: 'true'
         run: npm run build
 
+      - name: Add root redirect for GitHub Pages
+        run: |
+          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/core_coffee/"><title>Core Coffee</title></head><body>Redirecting to <a href="/core_coffee/">Core Coffee</a>...</body></html>' > out/index.html
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
-          cname: # leave empty unless you use a custom domain
+          force_orphan: true

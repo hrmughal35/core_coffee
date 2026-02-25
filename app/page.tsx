@@ -12,12 +12,16 @@ import {
   Moon,
 } from "lucide-react";
 import HeroVideo from "@/components/HeroVideo";
+import CoffeePourIntro from "@/components/CoffeePourIntro";
 
 const HERO_IMG = "/images/hero.svg";
 
 export default function HomePage() {
   return (
     <>
+      {/* Intro: coffee pour animation (plays once when page opens) */}
+      <CoffeePourIntro />
+
       {/* Hero — video background (fallback to image if no video) */}
       <section className="relative min-h-[100vh] flex flex-col justify-center overflow-hidden bg-coffee-950">
         <HeroVideo />
@@ -29,19 +33,19 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="flex flex-wrap justify-center gap-3 mb-8"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-accent/30 text-accent text-sm font-semibold backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-coffee-950/70 text-accent text-sm font-semibold backdrop-blur-md border border-accent/40">
               <Star className="w-4 h-4 fill-current" /> 4.7 · 31 reviews
             </span>
-            <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/20 text-white text-sm backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-coffee-950/80 text-white text-sm backdrop-blur-md border border-white/20">
               <Clock className="w-4 h-4" /> Open Now · Closes 2 AM
             </span>
-            <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/20 text-white text-sm backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-coffee-950/80 text-white text-sm backdrop-blur-md border border-white/20">
               Rs 1,000 – 2,000 per person
             </span>
           </motion.div>
 
           <motion.p
-            className="font-display text-sm sm:text-base uppercase tracking-[0.35em] text-accent mb-4"
+            className="font-display text-sm sm:text-base uppercase tracking-[0.35em] text-white mb-4 drop-shadow-hero"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -49,7 +53,7 @@ export default function HomePage() {
             DHA Phase 8 · Lahore
           </motion.p>
           <motion.h1
-            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-5 tracking-tight leading-[1.05]"
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-5 tracking-tight leading-[1.05] drop-shadow-hero"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
@@ -57,7 +61,7 @@ export default function HomePage() {
             Brewed to the Core.
           </motion.h1>
           <motion.p
-            className="text-white/90 text-lg sm:text-xl max-w-xl mx-auto mb-12 font-light"
+            className="text-white text-lg sm:text-xl max-w-xl mx-auto mb-12 font-light drop-shadow-hero"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
@@ -81,7 +85,7 @@ export default function HomePage() {
               href="https://www.foodpanda.com.pk/restaurant/v6en/core-coffee"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/10 text-white font-semibold hover:bg-white/20 transition-all duration-300 border-2 border-white/40 backdrop-blur-sm"
+              className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-coffee-950/90 text-white font-semibold hover:bg-coffee-900 transition-all duration-300 border-2 border-white/50 backdrop-blur-md shadow-lg"
             >
               Order Now
             </a>
