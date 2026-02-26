@@ -27,6 +27,12 @@ jobs:
           GITHUB_PAGES: 'true'
         run: npm run build
 
+      - name: Verify build output
+        run: |
+          ls -la out/
+          ls -la out/core_coffee/ || true
+          test -f out/core_coffee/index.html && echo "index.html found" || (echo "ERROR: index.html missing" && exit 1)
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
