@@ -1,8 +1,14 @@
 /** @type {import('next').NextConfig} */
-// For GitHub Pages: build for site root (no basePath) so .../core_coffee/ serves the app directly
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+const repoName = 'core_coffee';
+
 const nextConfig = {
   output: 'export',
   images: { unoptimized: true },
+  ...(isGitHubPages && {
+    basePath: `/${repoName}`,
+    assetPrefix: `/${repoName}/`,
+  }),
 };
 
 module.exports = nextConfig;
