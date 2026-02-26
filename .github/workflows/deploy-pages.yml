@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+env:
+  GITHUB_PAGES: 'true'
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -23,19 +26,25 @@ jobs:
         run: npm ci
 
       - name: Build for GitHub Pages
-        env:
-          GITHUB_PAGES: 'true'
         run: npm run build
 
-      - name: Verify build output
+      - name: Prepare deployment
+        id: prepare
         run: |
-          ls -la out/
-          ls -la out/core_coffee/ || true
-          test -f out/core_coffee/index.html && echo "index.html found" || (echo "ERROR: index.html missing" && exit 1)
+          if [ -f out/core_coffee/index.html ]; then
+            echo "dir=out/core_coffee" >> $GITHUB_OUTPUT
+            echo "Deploying out/core_coffee (basePath build)"
+          elif [ -f out/index.html ]; then
+            echo "dir=out" >> $GITHUB_OUTPUT
+            echo "Deploying out (root build)"
+          else
+            echo "ERROR: No index.html in out/ or out/core_coffee/"
+            exit 1
+          fi
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out/core_coffee
+          publish_dir: ./${{ steps.prepare.outputs.dir }}
           force_orphan: true
